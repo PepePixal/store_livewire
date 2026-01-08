@@ -1,11 +1,13 @@
 <?php
 
-use App\Livewire\Settings\Appearance;
-use App\Livewire\Settings\Password;
-use App\Livewire\Settings\Profile;
-use App\Livewire\Settings\TwoFactor;
-use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+use App\Livewire\Products\Index;
+use App\Livewire\Settings\Profile;
+use App\Livewire\Settings\Password;
+use App\Livewire\Settings\TwoFactor;
+use App\Livewire\Settings\Appearance;
+use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,3 +35,7 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
 });
+
+// envia la petición al componente Livewire Products\Index
+Route::get('products', Index::class)
+    ->name('products.index');
